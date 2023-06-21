@@ -1,0 +1,13 @@
+<div class="todo-list">
+  <div class="todo" *ngFor="let todo of listNewTodos">
+    <span class="name">{{ todo.name }}</span>
+    <span class="done">{{ todo.done === true ? ' is done' : ' is not done'}}</span>
+  </div>
+</div>
+
+<div class="input-field">
+  <input #todoInput type="text">
+</div>
+<div class="button-add">
+  <button (click)="addTodo()">New task</button>
+</div>

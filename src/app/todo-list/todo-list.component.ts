@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,23 +6,23 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent {
-  @ViewChild("todoInput") todoInput: ElementRef | undefined;
-  listNewTodos: Todo[] = [];
+  todoList: Todo[] = [];
+  inputValue: string = "";
 
-  addTodo() {
-    const newTodo: Todo = {
-      name: this.todoInput?.nativeElement.value,
-      done: true
-    };
+  addTask() {
+    if (this.inputValue.trim() !== "") {
+      const newTask: Todo = {
+        name: this.inputValue,
+        done: false
+      };
 
-    this.listNewTodos.push(newTodo);
-
-    //TODO delete value inside input field
-
+      this.todoList.push(newTask);
+    }
+    this.inputValue = "";
   }
 }
 
-export interface Todo {
+interface Todo {
   name: string,
-  done: boolean
+  done: boolean,
 }

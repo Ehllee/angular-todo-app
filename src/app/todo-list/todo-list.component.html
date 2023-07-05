@@ -1,13 +1,12 @@
-<div class="todo-list">
-  <div class="todo" *ngFor="let todo of listNewTodos">
-    <span class="name">{{ todo.name }}</span>
-    <span class="done">{{ todo.done === true ? ' is done' : ' is not done'}}</span>
+<label for="inputTask" class="block">Input your task here</label>
+<input type="text" name="inputTask" [(ngModel)]="inputValue">
+<button (click)="addTask()">Add Task</button>
+
+<div *ngFor="let todo of todoList">
+  <div>
+    The task <span class="bold">{{ todo.name }}</span>
+    is <span class="bold">{{ todo.done ? 'Done' : 'not done yet!' }}</span>
   </div>
 </div>
 
-<div class="input-field">
-  <input #todoInput type="text">
-</div>
-<div class="button-add">
-  <button (click)="addTodo()">New task</button>
-</div>
+<div>{{ inputValue }}</div>
